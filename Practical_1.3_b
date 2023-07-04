@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int inst=0;
+int binarySearch(int array[], int x, int low, int high) {
+    while (low <= high) {
+        inst++;
+        int mid = low + (high - low) / 2;
+        if (array[mid] == x)
+            return mid;
+        if (array[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    inst++;
+    return -1;
+}
+int main() {
+    int array[] = {1,2,3,4,5,6,7,8,9};
+    int x = 9;
+    int n = sizeof(array) / sizeof(array[0]);
+    inst++;
+    int result = binarySearch(array, x, 0, n - 1);
+    inst++;
+    if (result == -1)
+        cout<<"Not found"<<endl;
+    else
+        cout<<"Element "<< x <<" is found at index "<<result;
+        cout<<"\nNo of instruction is: "<<inst<<endl;
+}
