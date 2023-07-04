@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+int inst=0;
+int search(int array[], int n, int x)
+{
+    inst++;
+    for (int i = 0; i < n; i++)
+    {
+        if (array[i] == x)
+            return i;
+            inst++;
+    }
+    return -1;
+}
+int main() 
+{
+    int array[] = {1,2,3,4,5};
+    inst++;
+    int x = 1;
+    int n = sizeof(array) / sizeof(array[0]);
+    inst++;
+    int result = search(array, n, x);
+    inst++;
+    if(result == -1)
+    {
+        cout << "Element not found";
+        inst++;
+    }
+    else
+    {
+        cout << "Element found at index: " << result<<endl;
+        inst++;
+    }
+    cout<<"No of instruction is: "<<inst<<endl;
+}
